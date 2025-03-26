@@ -4,4 +4,4 @@ pub mod user_pay;
 
 pub use initialize::*;
 pub use owner::*;
-// pub use user_pay::*;
+pub use user_pay::*;

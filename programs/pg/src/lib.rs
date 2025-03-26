@@ -26,4 +26,8 @@ pub mod pg {
     pub fn transfer_owner(ctx: Context<TransferOwner>, new_owner: Pubkey) -> Result<()> {
         owner::transfer_owner(ctx, new_owner)
     }
+
+    pub fn user_pay(ctx: Context<UserPay>, amount: u64) -> Result<()> {
+        user_pay::user_pay(ctx, amount)
+    }
 }

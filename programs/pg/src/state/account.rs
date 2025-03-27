@@ -10,5 +10,12 @@ pub struct Vault {
 #[account]
 #[derive(InitSpace)]
 pub struct Owner {
-    pub owner: Pubkey,
+    pub addr: Pubkey,
+}
+
+#[account]
+#[derive(InitSpace)]
+pub struct Whitelist {
+    pub addr: Pubkey,
+    pub bump: u8,
 }

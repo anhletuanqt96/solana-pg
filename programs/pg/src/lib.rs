@@ -1,3 +1,4 @@
+#![allow(unexpected_cfgs)]
 pub mod constants;
 pub mod error;
 pub mod instructions;
@@ -19,12 +20,25 @@ pub mod pg {
         initialize::init_vault(ctx)
     }
 
+    /**
+     * Owner
+     */
     pub fn init_owner(ctx: Context<InitOwner>, new_owner: Pubkey) -> Result<()> {
         owner::init_owner(ctx, new_owner)
     }
 
     pub fn transfer_owner(ctx: Context<TransferOwner>, new_owner: Pubkey) -> Result<()> {
         owner::transfer_owner(ctx, new_owner)
+    }
+    /**
+     * Whitelist
+     */
+    pub fn add_whitelist(ctx: Context<AddWhitelist>, addr: Pubkey) -> Result<()> {
+        owner::add_whitelist(ctx, addr)
+    }
+
+    pub fn remove_whitelist(ctx: Context<RemoveWhitelist>) -> Result<()> {
+        owner::remove_whitelist(ctx)
     }
 
     pub fn user_pay(ctx: Context<UserPay>, amount: u64) -> Result<()> {

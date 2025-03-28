@@ -40,6 +40,12 @@ pub mod pg {
     pub fn remove_whitelist(ctx: Context<RemoveWhitelist>) -> Result<()> {
         owner::remove_whitelist(ctx)
     }
+    /**
+     * Merchant
+     */
+    pub fn merchant_send(ctx: Context<MerchantSend>, amount: u64) -> Result<()> {
+        merchant::merchant_send(ctx, amount)
+    }
 
     pub fn user_pay(ctx: Context<UserPay>, amount: u64) -> Result<()> {
         user_pay::user_pay(ctx, amount)

@@ -1,12 +1,10 @@
 #![allow(unexpected_cfgs)]
-pub mod constants;
 pub mod error;
 pub mod instructions;
 pub mod state;
 
 use anchor_lang::prelude::*;
 
-pub use constants::*;
 pub use instructions::*;
 pub use state::*;
 
@@ -51,3 +49,13 @@ pub mod pg {
         user_pay::user_pay(ctx, amount)
     }
 }
+
+// TODO:
+// remove check in vault_ata
+// payer = receiver
+
+// TODO: Testing
+// owner
+// whitelist
+// user_pay
+// merchant_send

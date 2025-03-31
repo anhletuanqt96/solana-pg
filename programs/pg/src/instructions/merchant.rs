@@ -31,6 +31,8 @@ pub struct MerchantSend<'info> {
         associated_token::token_program = token_program,
     )]
     pub receiver_ata: InterfaceAccount<'info, TokenAccount>,
+
+    /// CHECK: receiver info
     #[account(mut)]
     pub receiver: AccountInfo<'info>,
 
@@ -70,7 +72,3 @@ pub fn merchant_send(ctx: Context<MerchantSend>, amount: u64) -> Result<()> {
     });
     Ok(())
 }
-
-// TODO:
-// remove check in vault_ata
-// payer = receiver

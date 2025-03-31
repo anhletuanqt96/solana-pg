@@ -107,7 +107,6 @@ pub fn add_whitelist(ctx: Context<AddWhitelist>, addr: Pubkey) -> Result<()> {
  * Remove whitelist instruction
  */
 #[derive(Accounts)]
-#[instruction(addr: Pubkey)]
 pub struct RemoveWhitelist<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,

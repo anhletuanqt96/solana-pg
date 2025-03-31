@@ -54,8 +54,9 @@ pub mod pg {
 // remove check in vault_ata
 // payer = receiver
 
-// TODO: Testing
-// owner
-// whitelist
-// user_pay
+// TODO: Testing - 2uscppoFVJ9LVArshLvKKptyjm9ASuv6eP3AyxVXVUH9
+// vault - done
+// owner - done
+// whitelist - done
+// user_pay - done
 // merchant_send

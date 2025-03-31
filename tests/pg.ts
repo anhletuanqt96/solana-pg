@@ -1,6 +1,6 @@
 import * as anchor from "@coral-xyz/anchor";
-import { Program } from "@coral-xyz/anchor";
-import { Pg } from "../target/types/pg";
+import {Program} from "@coral-xyz/anchor";
+import {Pg} from "../target/types/pg";
 
 describe("pg", () => {
   // Configure the client to use the local cluster.
@@ -10,7 +10,7 @@ describe("pg", () => {
 
   it("Is initialized!", async () => {
     // Add your test here.
-    const tx = await program.methods.initialize().rpc();
+    const tx = await program.methods.initVault().rpc();
     console.log("Your transaction signature", tx);
   });
 });

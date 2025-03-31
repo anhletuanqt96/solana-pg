@@ -10,6 +10,13 @@ use crate::state::Vault;
 pub struct UserPay<'info> {
     #[account(mut)]
     pub signer: Signer<'info>,
+    #[account(
+        mut,
+        associated_token::mint = token_mint,
+        associated_token::authority = signer,
+        associated_token::token_program = token_program,
+    )]
+    pub signer_ata: InterfaceAccount<'info, TokenAccount>,
     pub token_mint: InterfaceAccount<'info, Mint>,
     #[account(
         seeds = [b"vault"],
@@ -41,7 +48,7 @@ pub fn user_pay(ctx: Context<UserPay>, amount: u64) -> Result<()> {
 
     let cpi_accounts = TransferChecked {
         mint: ctx.accounts.token_mint.to_account_info(),
-        from: ctx.accounts.signer.to_account_info(),
+        from: ctx.accounts.signer_ata.to_account_info(),
         to: ctx.accounts.vault_ata.to_account_info(),
         authority: ctx.accounts.signer.to_account_info(),
     };

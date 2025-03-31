@@ -4,7 +4,7 @@ use anchor_spl::{
     token_interface::{transfer_checked, Mint, TokenAccount, TokenInterface, TransferChecked},
 };
 
-use crate::state::Vault;
+use crate::state::account::Vault;
 
 #[derive(Accounts)]
 pub struct MerchantSend<'info> {

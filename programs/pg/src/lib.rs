@@ -51,12 +51,12 @@ pub mod pg {
 }
 
 // TODO:
-// remove check in vault_ata
-// payer = receiver
+// remove check in vault_ata - done
+// payer = receiver - done
 
 // TODO: Testing - 2uscppoFVJ9LVArshLvKKptyjm9ASuv6eP3AyxVXVUH9
 // vault - done
 // owner - done
 // whitelist - done
 // user_pay - done
-// merchant_send
+// merchant_send - done

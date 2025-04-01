@@ -3,6 +3,7 @@ use anchor_spl::token_interface::Mint;
 
 use crate::state::Vault;
 
+#[event_cpi]
 #[derive(Accounts)]
 pub struct InitVault<'info> {
     #[account(mut)]
@@ -28,6 +29,6 @@ pub fn init_vault(ctx: Context<InitVault>) -> Result<()> {
     let vault = &mut ctx.accounts.vault;
     vault.owner = *ctx.accounts.signer.key;
     vault.bump = ctx.bumps.vault;
-    emit!(InitSuccess { vault: vault.key() });
+    emit_cpi!(InitSuccess { vault: vault.key() });
     Ok(())
 }

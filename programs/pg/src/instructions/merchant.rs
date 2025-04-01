@@ -6,6 +6,7 @@ use anchor_spl::{
 
 use crate::state::account::Vault;
 
+#[event_cpi]
 #[derive(Accounts)]
 pub struct MerchantSend<'info> {
     #[account(mut)]
@@ -25,9 +26,9 @@ pub struct MerchantSend<'info> {
     pub vault_ata: InterfaceAccount<'info, TokenAccount>,
     #[account(
         init_if_needed,
-        payer = receiver,
+        payer = signer,
         associated_token::mint = token_mint,
-        associated_token::authority = vault,
+        associated_token::authority = receiver,
         associated_token::token_program = token_program,
     )]
     pub receiver_ata: InterfaceAccount<'info, TokenAccount>,
@@ -64,7 +65,7 @@ pub fn merchant_send(ctx: Context<MerchantSend>, amount: u64) -> Result<()> {
     let cpi_context = CpiContext::new(cpi_program, cpi_accounts).with_signer(signer_seeds);
     transfer_checked(cpi_context, amount, decimals)?;
 
-    emit!(MerchantSendSuccess {
+    emit_cpi!(MerchantSendSuccess {
         sender: ctx.accounts.vault_ata.key(),
         receiver: ctx.accounts.receiver_ata.key(),
         token_mint: ctx.accounts.token_mint.key(),

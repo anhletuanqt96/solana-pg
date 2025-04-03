@@ -21,6 +21,7 @@ pub struct InitVault<'info> {
 }
 
 #[event]
+#[derive(Debug)]
 pub struct InitSuccess {
     pub vault: Pubkey,
 }
@@ -29,6 +30,8 @@ pub fn init_vault(ctx: Context<InitVault>) -> Result<()> {
     let vault = &mut ctx.accounts.vault;
     vault.owner = *ctx.accounts.signer.key;
     vault.bump = ctx.bumps.vault;
-    emit_cpi!(InitSuccess { vault: vault.key() });
+    let vault_event = InitSuccess { vault: vault.key() };
+    msg!("Vault event: {:?}", vault_event);
+    emit_cpi!(vault_event);
     Ok(())
 }

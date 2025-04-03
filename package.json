@@ -5,6 +5,7 @@
     "lint": "prettier */*.js \"*/**/*{.js,.ts}\" --check"
   },
   "dependencies": {
+    "local-validator": "solana-test-validator --reset",
     "@coral-xyz/anchor": "^0.30.1",
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.0"
